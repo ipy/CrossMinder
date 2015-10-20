@@ -1,0 +1,13 @@
+#login-dropdown-list {
+  left: auto;
+  right: 1px;
+}
+
+#login-dropdown-list .login-close-text {
+  float: right;
+}
+
+#user-head {
+  height: 32px;
+  margin: 4px;
+}
