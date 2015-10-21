@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8">
-    <title>KityMinder Editor - Powered By FEX</title>
+    <title>Cross Minder</title>
 
   <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
 
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" href="bower_components/kityminder-editor/dist/kityminder.editor.min.css" />
   <!-- endbower -->
+  <!-- togetherjs -->
+    <script src="https://togetherjs.com/togetherjs-min.js"></script>
+  <!-- endtogetherjs -->
 
     <style>
         html, body {
@@ -67,14 +70,22 @@
                   window.bootCrossMinder(minder, editor, json_diff);
                 }
               };
+
+              $('#start-togetherjs').on('click', function(e) {
+                TogetherJS(e.target);
+                e.preventDefault();
+                return false;
+              })
             });
     </script>
 </head>
 
 <body ng-app="kityminderDemo" ng-controller="MainController">
     <h1 class="editor-title">
+      <span>Cross Minder - Collaborative mind-map based on Meteor and KityMinder</span>
       <!-- <blaze-template class="pull-right" name="loginButtons"></blaze-template> -->
       <img class="pull-right" id="user-head" />
+      <button id="start-togetherjs" class="pull-right btn-info">Start TogetherJS</button>
     </h1>
     <kityminder-editor on-init="initEditor(editor, minder)"></kityminder-editor>
 </body>
