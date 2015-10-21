@@ -8,8 +8,6 @@ Using [KityMinder](https://github.com/fex-team/kityminder-editor) as front-end m
 ```sh
 git clone https://github.com/ipy/CrossMinder.git
 cd CrossMinder
-cd public
-bower install kityminder-editor
-cd ..
+bower install
 meteor
 ```

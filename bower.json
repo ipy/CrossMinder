@@ -1,0 +1,26 @@
+{
+  "name": "CrossMinder",
+  "main": "CrossMinder.js",
+  "homepage": "https://github.com/ipy/CrossMinder",
+  "authors": [
+    "Sin <dev@zouxin.net>"
+  ],
+  "description": "Collaborative mind-map",
+  "moduleType": [],
+  "keywords": [
+    "mindmap",
+    "meteor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kityminder-editor": "~1.0.39"
+  }
+}
