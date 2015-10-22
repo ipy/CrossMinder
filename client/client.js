@@ -5,6 +5,34 @@ Meteor.startup(function() {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
   });
+
+  Tracker.autorun(function() {
+    var user = Meteor.user();
+    if(user) {
+      var name = user.username || user.profile.name;
+      var head;
+      if(user.services && user.services.github) {
+        head = 'https://avatars.githubusercontent.com/u/' + user.services.github.id;
+      }
+      if(!head) {
+        var hash = CryptoJS.MD5($.trim(user.emails && user.emails[0] || user._id).toLowerCase());
+        head = 'http://www.gravatar.com/avatar/' + hash + '?' + 'd=retro';
+      }
+      $('#user-head').attr('src', head);
+
+      if(window.TogetherJS) {
+        window.TogetherJSConfig_getUserName = function () {return name;};
+        window.TogetherJSConfig_getUserAvatar = function () {return head;};
+        //window.TogetherJSConfig_getUserColor = function () {return '#ff00ff';};
+        window.TogetherJS.refreshUserData();
+      }
+    } else {
+      $('#user-head').attr('src', '');
+      delete window.TogetherJSConfig_getUserName;
+      delete window.TogetherJSConfig_getUserAvatar;
+      window.TogetherJS.refreshUserData();
+    }
+  });
 });
 
 Meteor.subscribe("userData");
